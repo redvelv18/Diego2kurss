@@ -12,7 +12,7 @@
 // ok 10) izveidojiet izvēlni, kas ļauj lietotājam dzēt eksistējošu uzdevumu
 
 // ok 1) Turpat main.php failā izveidojam klasi Task ar atribūtiem $id un $content
-// 2) pievienojam instances metodi "display", lai katra Task klases instance varētu 
+// ok 2) pievienojam instances metodi "display", lai katra Task klases instance varētu 
 // sevi attēlot ar $task->display()
 class Task {
     public $id;
@@ -20,6 +20,13 @@ class Task {
 
     public function __construct($id,$content){
         $this->id = $id;
+        $this->content = $content;
+    }
+
+    public function edit($content){
+        // $taskNum = readline("Which task do you want to edit?\n");
+        // $this->id = $taskNum;
+        // $content = readline("Enter new content: \n");
         $this->content = $content;
     }
 
@@ -51,6 +58,15 @@ function deleteTask(&$inpTasks){
     unset($inpTasks[$taskNum]);
     $inpTasks = array_values($inpTasks);
 }
+function editTask(&$tasks) {
+    echo "(example: 0. first task, 1. second task)\n";
+    $taskNum = readline("Enter the task number you want to edit: ");
+    if (isset($tasks[$taskNum])) {
+        echo "Current content: " . $tasks[$taskNum]->content . "\n";
+        $newContent = readline("Enter new content: ");
+        $tasks[$taskNum]->edit($newContent);
+        echo "!! Task updated\n";
+}}
 
 
 while(true){
@@ -77,11 +93,10 @@ while(true){
             echo "!! Task deleted \n";
             break;
         case 4:
-            //$tasks->display();
-            //break;
+            editTask($tasks);
+            break;
     }
 }
 
-// 4) izveidojiet rediģēšanas funkcionalitāti, 
+// ok 4) izveidojiet rediģēšanas funkcionalitāti, 
 // kad lietotājs var izvēlēties pēc indeksa, 
-// kuru uzdevumu rediģēt un mainīt tā saturu ($content)
