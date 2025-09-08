@@ -13,3 +13,7 @@
 
 
 echo "I don't wanna be here";
+
+while(true){
+    readline("lalalalala lololololo");
+}
