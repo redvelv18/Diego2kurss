@@ -11,6 +11,24 @@
 // ok 9) izveidojiet izvēlni, kas ļauj lietotājam pievienot jaunu uzdevumu
 // ok 10) izveidojiet izvēlni, kas ļauj lietotājam dzēt eksistējošu uzdevumu
 
+// ok 1) Turpat main.php failā izveidojam klasi Task ar atribūtiem $id un $content
+// 2) pievienojam instances metodi "display", lai katra Task klases instance varētu 
+// sevi attēlot ar $task->display()
+class Task {
+    public $id;
+    public $content;
+
+    public function __construct($id,$content){
+        $this->id = $id;
+        $this->content = $content;
+    }
+
+    public function display(&$task){
+        echo "The task ID is $this->id";
+        echo "content: \n $this->content";
+    }
+}
+
 function showAllTasks($inpTasks){
     foreach($inpTasks as $task){
         echo $task ."\n";
@@ -21,7 +39,7 @@ function addTask(&$inpTasks){
     $inpTasks[] = $newTask;
 }
 function deleteTask(&$inpTasks){
-    echo "(example: 0. task one, 1. task two)";
+    echo "(example: 0. task one, 1. task two)\n";
     $newTask = readline("Enter the task number (0-10) \n");
     unset($inpTasks[$newTask]);
 }
@@ -30,8 +48,7 @@ function deleteTask(&$inpTasks){
 $tasks = ["first task","second task","third task"];
 
 while(true){
-    $inp = readline("Choose 1(one) to show tasks, 2(two) to add a new task, 
-    3(three) to delete a task, 0(zero) to exit. ");
+    $inp = readline("Choose 1(one) to show tasks, 2(two) to add a new task, 3(three) to delete a task, 0(zero) to exit. \n");
     switch ($inp) {
         case 0:
             echo "!! you have exited";
@@ -52,24 +69,9 @@ while(true){
             echo "Which task do you want to delete? \n";
             deleteTask($tasks);
             echo "!! Task deleted \n";
-    }
-}
-
-// ok 1) Turpat main.php failā izveidojam klasi Task ar atribūtiem $id un $content
-// 2) pievienojam instances metodi "display", lai katra Task klases instance varētu 
-// sevi attēlot ar $task->display()
-
-class Task {
-    public $id;
-    public $content;
-
-    public function __construct($id,$content){
-        $this->id = $id;
-        $this->content = $content;
-    }
-
-    public function display(){
-        echo "The task ID is $this->id";
-        echo "content: \n $this->content";
+            break;
+        case 4:
+            //$tasks->display();
+            //break;
     }
 }
