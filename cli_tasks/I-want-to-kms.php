@@ -23,29 +23,35 @@ class Task {
         $this->content = $content;
     }
 
-    public function display(&$task){
-        echo "The task ID is $this->id";
+    public function display(){
+        echo "\nThe task ID is $this->id\n";
         echo "content: \n $this->content";
     }
 }
 
+$tasks = [
+    new Task(0, "first task"),
+    new Task(1, "second task"),
+    new Task(2, "third task"),
+];
+
 function showAllTasks($inpTasks){
     foreach($inpTasks as $task){
-        echo $task ."\n";
+        $task->display();
     }
 }
 function addTask(&$inpTasks){
-    $newTask = readline("Enter new task \n");
-    $inpTasks[] = $newTask;
+    $newContent = readline("Enter new task \n");
+    $newId = count($inpTasks);
+    $inpTasks[] = new Task($newId, $newContent);
 }
 function deleteTask(&$inpTasks){
-    echo "(example: 0. task one, 1. task two)\n";
-    $newTask = readline("Enter the task number (0-10) \n");
-    unset($inpTasks[$newTask]);
+    echo "(example: 0. first task, 1. second task)\n";
+    $taskNum = readline("Enter the task number (0-10) \n");
+    unset($inpTasks[$taskNum]);
+    $inpTasks = array_values($inpTasks);
 }
 
-
-$tasks = ["first task","second task","third task"];
 
 while(true){
     $inp = readline("Choose 1(one) to show tasks, 2(two) to add a new task, 3(three) to delete a task, 0(zero) to exit. \n");
@@ -57,7 +63,7 @@ while(true){
             echo "!! here are your tasks: \n";
             echo "----------- \n";
             showAllTasks($tasks);
-            echo "----------- \n";
+            echo "\n ----------- \n";
             echo "!-- To continue: ";
             break;
         case 2:
@@ -75,3 +81,7 @@ while(true){
             //break;
     }
 }
+
+// 4) izveidojiet rediģēšanas funkcionalitāti, 
+// kad lietotājs var izvēlēties pēc indeksa, 
+// kuru uzdevumu rediģēt un mainīt tā saturu ($content)
