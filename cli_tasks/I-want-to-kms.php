@@ -14,9 +14,16 @@
 $tasks = ["first task","second task","third task"];
 
 while(true){
-    $inp = readline("Ahlelele ahlelas");
-    if($inp == 'no'){
-        exit;
+    $inp = readline("Ahlelele ahlelas ");
+    //if($inp == 'no'){
+    //    exit;
+    //}
+    switch ($inp) {
+        case 0:
+            exit;
+        case 1:
+            echo "You have ahlelele'd one time";
+            break;
     }
 }
 
