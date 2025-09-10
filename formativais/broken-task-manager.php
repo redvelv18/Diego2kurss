@@ -2,9 +2,15 @@
 
 $tasks = [
     1 => ['status' => 'done', 'priority' => 2, 'content' => 'konsultācija 15:10', 'id' => '1'],
-    2 => ['status' => 'inprogress', 'priority' => 5, 'content'=> 'aizbraukt uz veikalu 19:00','id' => '1'],
-    3 => ['priority' => 5, 'content'=> 'aizbraukt uz veikalu 19:00','id' => '1'],
+    2 => ['status' => 'inprogress', 'priority' => 5, 'content'=> 'aizbraukt uz veikalu 19:00','id' => '2'],
+    3 => ['status' => 'unknwon', 'priority' => 5, 'content'=> 'aizbraukt uz veikalu 19:00','id' => '3'],
 ];
+
+//class Testing{
+//    function makeId($userId){
+ //       $id = $userId;
+ //   }
+//}
 
 function displayTask($task) {
     echo "ID: {$task['id']}, CONTENT: {$task['content']}, STATUS: {$task['status']}\n";
@@ -20,13 +26,14 @@ function viewTask(&$tasks) {
 }
 
 function addTask(&$tasks) {
-    readline("Ievadiet jaunu uzdevumu: ");
-    $tasks[] = [ 'status' => 'new', 'priority' => 5, 'content' => $newContent ];
+    $newContent = readline("Ievadiet jaunu uzdevumu: ");
+    $newId = readline("Ievadiet uzdevuma ID: ");
+    $tasks[] = [ 'status' => 'new', 'priority' => 5, 'content' => $newContent, 'id' => $newId ];
     echo "Uzdevums pievienots\n";
 }
 
 function deleteTask(&$tasks) {
-    $id = input("Ievadiet dzēšamā uzdevuma ID: ");
+    $id = readline("Ievadiet dzēšamā uzdevuma ID: ");
     if (isset($tasks[$id])) {
         unset($tasks);
         echo "Uzdevums dzēsts\n";
