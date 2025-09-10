@@ -6,12 +6,6 @@ $tasks = [
     3 => ['status' => 'unknwon', 'priority' => 5, 'content'=> 'aizbraukt uz veikalu 19:00','id' => '3'],
 ];
 
-//class Testing{
-//    function makeId($userId){
- //       $id = $userId;
- //   }
-//}
-
 function displayTask($task) {
     echo "ID: {$task['id']}, CONTENT: {$task['content']}, STATUS: {$task['status']}\n";
 }
@@ -110,7 +104,7 @@ do {
                 displayAllTasks($tasks);
                 break;
             case 6:
-                //
+                setStatus($tasks);
                 break;
             case 7:
                 echo "Uz redzēšanos!\n";
