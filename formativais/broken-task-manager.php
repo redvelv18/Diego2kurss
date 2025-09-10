@@ -1,9 +1,9 @@
 <?php
 
 $tasks = [
-    1 => ['status' => 'done', 'priority' => 2, 'content' => 'konsultācija 15:10'],
-    2 => ['status' => 'inprogress', 'priority' => 5, 'content'=> 'aizbraukt uz veikalu 19:00'],
-    3 => ['priority' => 5, 'content'=> 'aizbraukt uz veikalu 19:00'],
+    1 => ['status' => 'done', 'priority' => 2, 'content' => 'konsultācija 15:10', 'id' => '1'],
+    2 => ['status' => 'inprogress', 'priority' => 5, 'content'=> 'aizbraukt uz veikalu 19:00','id' => '1'],
+    3 => ['priority' => 5, 'content'=> 'aizbraukt uz veikalu 19:00','id' => '1'],
 ];
 
 function displayTask($task) {
